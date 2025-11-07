@@ -9,11 +9,23 @@ import { DialogData } from '../../../shared/ui/dialog/dialog-data.model';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { Account } from '../data/account.model';
 import { CurrencyPipe, DatePipe } from '@angular/common';
-import AccountTransactionHistory from "./account-transaction-history";
+import AccountTransactionHistory from './account-transaction-history';
+import NumberFlow from '../../../shared/ui/number-flow';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { interval, map, take, timer } from 'rxjs';
 
 @Component({
   selector: 'app-account-detail',
-  imports: [HlmSpinnerImports, HlmButtonImports, HlmFieldImports, Dialog, CurrencyPipe, DatePipe, AccountTransactionHistory],
+  imports: [
+    HlmSpinnerImports,
+    HlmButtonImports,
+    HlmFieldImports,
+    Dialog,
+    CurrencyPipe,
+    DatePipe,
+    AccountTransactionHistory,
+    NumberFlow,
+  ],
   providers: [provideIcons({ lucideLoaderCircle, lucideUserRound })],
   template: `
     <app-dialog
@@ -49,7 +61,19 @@ import AccountTransactionHistory from "./account-transaction-history";
             <div hlmField class="gap-1">
               <label hlmFieldLabel for="currentBalance">Current Balance</label>
               <p hlmFieldDescription class="font-mono text-2xl">
-                {{ _dialogContext.data.balance | currency: 'ZAR' : 'symbol-narrow' }}
+                <!-- {{ _dialogContext.data.balance | currency: 'ZAR' : 'symbol-narrow' }} -->
+
+                <app-number-flow
+                  [trend]="-1"
+                  [value]="balance()"
+                  [digits]="digits"
+                  [format]="{
+                    minimumIntegerDigits: 1,
+                    style: 'currency',
+                    currency: 'ZAR',
+                  }"
+                  locales="en-ZA"
+                />
               </p>
             </div>
           </div>
@@ -57,7 +81,7 @@ import AccountTransactionHistory from "./account-transaction-history";
 
         <hlm-field-separator />
 
-        <app-account-transaction-history />
+        <app-account-transaction-history [accountId]="_dialogContext.data.accountId" />
       </div>
     </app-dialog>
   `,
@@ -66,4 +90,15 @@ import AccountTransactionHistory from "./account-transaction-history";
 })
 export default class AccountDetail {
   protected readonly _dialogContext = injectBrnDialogContext<DialogData<Account>>();
+
+  readonly digits = { 1: { max: 5 } };
+
+  // delay balance so that is animates smoothly
+  balance = toSignal(
+    timer(250).pipe(
+      map(() => this._dialogContext.data.balance),
+      take(1),
+    ),
+    { initialValue: 0 },
+  );
 }
