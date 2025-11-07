@@ -1,0 +1,4 @@
+{
+    "APP_ACCOUNTS_API_URL": "http://localhost:5001/api",
+    "APP_TRANSACTIONS_API_URL": "http://localhost:3001/api"
+}
