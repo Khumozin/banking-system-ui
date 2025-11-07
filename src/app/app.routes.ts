@@ -8,14 +8,23 @@ export const routes: Routes = [
       {
         path: 'accounts',
         loadChildren: () => import('./features/accounts/accounts.routes'),
+        data: {
+          breadcrumb: 'Accounts',
+        },
       },
       {
         path: 'transactions',
         loadChildren: () => import('./features/transactions/transactions.routes'),
+        data: {
+          breadcrumb: 'Transactions',
+        },
       },
       {
         path: 'notifications',
         loadChildren: () => import('./features/notifications/notifications.routes'),
+        data: {
+          breadcrumb: 'Notifications',
+        },
       },
       {
         path: '',
