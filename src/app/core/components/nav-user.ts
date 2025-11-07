@@ -41,7 +41,7 @@ interface User {
           >
             <hlm-avatar class="h-8 w-8 rounded-lg">
               <img [src]="user()?.avatar" [alt]="user()?.name" hlmAvatarImage />
-              <span class="bg-[#FD005B] text-white rounded-lg" hlmAvatarFallback>RG</span>
+              <span class="bg-[#FD005B] text-white rounded-lg" hlmAvatarFallback>KM</span>
             </hlm-avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
               <span class="truncate font-medium">{{ user()?.name }}</span>
@@ -60,7 +60,7 @@ interface User {
           <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
             <hlm-avatar class="h-8 w-8 rounded-lg">
               <img [src]="user()?.avatar" [alt]="user()?.name" hlmAvatarImage />
-              <span class="bg-[#FD005B] text-white rounded-lg" hlmAvatarFallback>RG</span>
+              <span class="bg-[#FD005B] text-white rounded-lg" hlmAvatarFallback>KM</span>
             </hlm-avatar>
             <div class="grid flex-1 text-left text-sm leading-tight">
               <span class="truncate font-medium">{{ user()?.name }}</span>

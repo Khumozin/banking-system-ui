@@ -6,9 +6,22 @@ export const routes: Routes = [
     loadComponent: () => import('./core/components/main-layout'),
     children: [
       {
+        path: 'accounts',
+        loadChildren: () => import('./features/accounts/accounts.routes'),
+      },
+      {
+        path: 'transactions',
+        loadChildren: () => import('./features/transactions/transactions.routes'),
+      },
+      {
         path: 'notifications',
         loadChildren: () => import('./features/notifications/notifications.routes'),
       },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'notifications'
+      }
     ],
   },
   {

@@ -4,9 +4,9 @@ import {
   lucideGalleryVerticalEnd,
   lucideAudioWaveform,
   lucideCommand,
-  lucideSquareTerminal,
-  lucideBot,
-  lucideBookOpen,
+  lucideUsersRound,
+  lucideArrowLeftRight,
+  lucideBell,
   lucideSettings2,
   lucideFrame,
   lucideChartPie,
@@ -23,9 +23,9 @@ import TeamSwitcher from './team-switcher';
 
 const data = {
   user: {
-    name: 'spartan',
+    name: 'Khumo Mogorosi',
     email: 'm@example.com',
-    avatar: 'https://spartan.ng/assets/avatar.png',
+    avatar: 'https://avatars.githubusercontent.com/u/30941916?s=400&u=99cb30e3609f8089467a7b3bd3f7570b5178e8ea&v=4',
   },
   teams: [
     {
@@ -47,62 +47,22 @@ const data = {
   navMain: [
     {
       title: 'Accounts',
-      url: '',
-      icon: 'lucideSquareTerminal',
+      url: 'accounts',
+      icon: 'lucideUsersRound',
       isActive: true,
-      items: [
-        {
-          title: 'All Accounts',
-          url: '',
-        },
-      ],
+      items: [],
     },
     {
       title: 'Transactions',
-      url: '',
-      icon: 'lucideBot',
-      items: [
-        {
-          title: 'All Transactions',
-          url: '',
-        },
-        {
-          title: 'Deposit',
-          url: '',
-        },
-        {
-          title: 'Transfer',
-          url: '',
-        },
-      ],
+      url: 'transactions',
+      icon: 'lucideArrowLeftRight',
+      items: [],
     },
     {
       title: 'Notifications',
       url: 'notifications',
-      icon: 'lucideBookOpen',
-      items: [
-        {
-          title: 'All Notifications',
-          url: '',
-        },
-      ],
-    },
-  ],
-  projects: [
-    {
-      name: 'Design Engineering',
-      url: '',
-      icon: 'lucideFrame',
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '',
-      icon: 'lucideChartPie',
-    },
-    {
-      name: 'Travel',
-      url: '/projects',
-      icon: 'lucideMap',
+      icon: 'lucideBell',
+      items: [],
     },
   ],
 };
@@ -115,9 +75,9 @@ const data = {
       lucideGalleryVerticalEnd,
       lucideAudioWaveform,
       lucideCommand,
-      lucideSquareTerminal,
-      lucideBot,
-      lucideBookOpen,
+      lucideUsersRound,
+      lucideArrowLeftRight,
+      lucideBell,
       lucideSettings2,
       lucideFrame,
       lucideChartPie,

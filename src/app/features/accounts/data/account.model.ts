@@ -5,3 +5,8 @@ export interface Account {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface AccountBalance {
+  accountId: string;
+  balance: number;
+}

@@ -33,6 +33,8 @@
     "@ng-icons/lucide": ">=32.0.0",
     "@spartan-ng/brain": "^0.0.1-alpha.547",
     "@tailwindcss/postcss": "^4.1.16",
+    "@tanstack/angular-query-experimental": "^5.90.9",
+    "@tanstack/angular-table": "^8.21.3",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "ngx-sonner": ">=3.0.0",

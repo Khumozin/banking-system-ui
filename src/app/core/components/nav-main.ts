@@ -3,7 +3,7 @@ import { NgIcon } from '@ng-icons/core';
 import { HlmIcon } from '@spartan-ng/helm/icon';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 import { BrnCollapsibleImports } from '@spartan-ng/brain/collapsible';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { BrnMenuImports } from '@spartan-ng/brain/menu';
 import { HlmMenuImports } from '@spartan-ng/helm/menu';
 
@@ -29,6 +29,7 @@ interface NavMainItem {
     HlmIcon,
     NgIcon,
     RouterLink,
+    RouterLinkActive
   ],
   template: `
     <div hlmSidebarGroup>
@@ -37,16 +38,16 @@ interface NavMainItem {
         <ul hlmSidebarMenu>
           @for (item of items(); track $index) {
             <li hlmSidebarMenuItem>
-              <a hlmSidebarMenuButton [routerLink]="item.url">
+              <a
+                hlmSidebarMenuButton
+                routerLinkActive
+                #rla="routerLinkActive"
+                [routerLink]="item.url"
+                [class.bg-accent]="rla.isActive"
+              >
                 <ng-icon hlm [name]="item.icon" size="sm" />
                 <span>{{ item.title }}</span>
               </a>
-              <ng-template #menu>
-                <hlm-menu>
-                  <button hlmMenuItem>Edit Project</button>
-                  <button hlmMenuItem>Delete Project</button>
-                </hlm-menu>
-              </ng-template>
             </li>
           }
         </ul>

@@ -9,7 +9,7 @@ import { HlmEmptyImports } from '@spartan-ng/helm/empty';
   imports: [NgIcon, HlmButton, HlmEmptyImports],
   providers: [provideIcons({ lucideBell, lucideRefreshCcw })],
   template: `
-    <div hlmEmpty class="h-full w-full">
+    <div hlmEmpty class="h-2/3 w-full">
       <div hlmEmptyHeader>
         <div hlmEmptyMedia variant="icon">
           <ng-icon name="lucideBell" />
