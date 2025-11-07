@@ -1,59 +1,89 @@
-# BankingSystemUi
+# Banking System UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+A modern banking application built with Angular 20 that allows users to manage bank accounts, perform financial transactions, and track transaction history with an intuitive interface and real-time data tables.
 
-## Development server
+## Features
 
-To start a local development server, run:
+### Account Management
+- View all accounts in a sortable, filterable data table
+- Create new accounts with initial balance
+- View detailed account information and transaction history
+- Animated balance display with smooth number transitions
+- Copy account IDs to clipboard
 
-```bash
-ng serve
-```
+### Transaction Management
+- View all transactions with advanced filtering
+- Make deposits to any account
+- Transfer funds between accounts
+- Filter by status (PENDING, COMPLETED, FAILED)
+- Filter by type (DEPOSIT, TRANSFER)
+- Real-time transaction status updates
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### UI Features
+- Responsive sidebar navigation with collapsible menu
+- Light/dark mode theme toggle
+- Advanced data tables with pagination and column visibility controls
+- Toast notifications for user feedback
+- South African Rand (ZAR) currency formatting
 
-## Code scaffolding
+## Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Angular** 20.2 with standalone components and signals
+- **TailwindCSS** 4.1 for utility-first styling
+- **Spartan UI** headless component library
+- **TanStack Query** for server state management
+- **TanStack Table** for advanced data tables
+- **number-flow** for animated number transitions
+- **ng-icons** with Lucide icon set
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Getting Started
 
 ```bash
-ng test
+# Install dependencies
+npm install
+
+# Start development server
+npm start
 ```
 
-## Running end-to-end tests
+Open [http://localhost:4200](http://localhost:4200) to view the app.
 
-For end-to-end (e2e) testing, run:
+## Commands
 
 ```bash
-ng e2e
+npm start          # Start dev server
+npm run build      # Build for production
+npm test           # Run tests
+npm run watch      # Build with watch mode
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Project Structure
 
-## Additional Resources
+```
+src/app/
+├── core/
+│   ├── components/      # Layout components (sidebar, header, etc.)
+│   ├── services/        # Core services (theme, etc.)
+│   └── interceptors/    # HTTP interceptors
+├── features/
+│   ├── accounts/        # Account management feature
+│   ├── transactions/    # Transaction management feature
+│   └── notifications/   # Notifications feature
+└── shared/
+    ├── ui/              # Shared UI components
+    ├── directives/      # Custom directives
+    └── constants/       # App constants
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Architecture Highlights
+
+- **Standalone Components** - No NgModules, leveraging Angular's latest APIs
+- **Signals** - Modern state management with Angular signals
+- **Lazy Loading** - Features loaded on-demand via routing
+- **Zoneless Change Detection** - Optimized for performance
+- **Reactive Forms** - Type-safe form handling
+- **Dialog-based UX** - Modal dialogs for create/edit operations
+
+---
+
+Built with [Angular CLI](https://angular.dev/tools/cli)
