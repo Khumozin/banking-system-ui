@@ -4,7 +4,12 @@ export const routes: Routes = [
   {
     path: '',
     loadComponent: () => import('./core/components/main-layout'),
-    children: [],
+    children: [
+      {
+        path: 'notifications',
+        loadChildren: () => import('./features/notifications/notifications.routes'),
+      },
+    ],
   },
   {
     path: '**',

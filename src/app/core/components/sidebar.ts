@@ -78,7 +78,7 @@ const data = {
     },
     {
       title: 'Notifications',
-      url: '',
+      url: 'notifications',
       icon: 'lucideBookOpen',
       items: [
         {

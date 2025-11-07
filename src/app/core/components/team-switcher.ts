@@ -37,7 +37,7 @@ interface Team {
         >
           <!-- bg-foreground text-accent  -->
           <div
-            class="bg-sidebar-foreground text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg border"
+            class="bg-primary text-sidebar-accent flex aspect-square size-8 items-center justify-center rounded-lg border"
           >
             <ng-icon hlm [name]="activeTeam()?.logo" class="size-4" size="sm" />
           </div>
