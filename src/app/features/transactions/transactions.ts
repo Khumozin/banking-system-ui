@@ -19,13 +19,13 @@ import {
   lucideSearch,
   lucideX,
 } from '@ng-icons/lucide';
-import { BrnMenuImports } from '@spartan-ng/brain/menu';
+
 import { BrnSelectImports } from '@spartan-ng/brain/select';
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmDialogService } from '@spartan-ng/helm/dialog';
 import { HlmIconImports } from '@spartan-ng/helm/icon';
 import { HlmInputImports } from '@spartan-ng/helm/input';
-import { HlmMenuImports } from '@spartan-ng/helm/menu';
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmSelectImports } from '@spartan-ng/helm/select';
 import { HlmTableImports } from '@spartan-ng/helm/table';
 import { QueryClient, injectQuery } from '@tanstack/angular-query-experimental';
@@ -56,8 +56,7 @@ import { TypePipe } from './pipes/type-pipe';
   imports: [
     FlexRenderDirective,
     FormsModule,
-    BrnMenuImports,
-    HlmMenuImports,
+    HlmDropdownMenuImports,
     HlmButtonImports,
     NgIcon,
     HlmIconImports,
@@ -103,14 +102,14 @@ import { TypePipe } from './pipes/type-pipe';
           (input)="_filterChanged($event, 'Name')"
         />
 
-        <brn-popover
+        <hlm-popover
           [state]="_statusState()"
           (stateChanged)="statusStateChanged($event)"
           sideOffset="5"
           closeDelay="100"
           align="start"
         >
-          <button hlmBtn brnPopoverTrigger variant="outline" size="sm" class="border-dashed">
+          <button hlmBtn hlmPopoverTrigger variant="outline" size="sm" class="border-dashed">
             <ng-icon hlm name="lucideCirclePlus" class="mr-2" size="sm" />
             Status
             @if (_statusFilter().length) {
@@ -153,16 +152,16 @@ import { TypePipe } from './pipes/type-pipe';
               </hlm-command-group>
             </hlm-command-list>
           </hlm-command>
-        </brn-popover>
+        </hlm-popover>
 
-        <brn-popover
+        <hlm-popover
           [state]="_transactionTypeState()"
           (stateChanged)="transactionTypeStateChanged($event)"
           sideOffset="5"
           closeDelay="100"
           align="start"
         >
-          <button hlmBtn brnPopoverTrigger variant="outline" size="sm" class="border-dashed">
+          <button hlmBtn hlmPopoverTrigger variant="outline" size="sm" class="border-dashed">
             <ng-icon hlm name="lucideCirclePlus" class="mr-2" size="sm" />
             Type
             @if (_transactionTypeFilter().length) {
@@ -212,7 +211,7 @@ import { TypePipe } from './pipes/type-pipe';
               </hlm-command-group>
             </hlm-command-list>
           </hlm-command>
-        </brn-popover>
+        </hlm-popover>
 
         @if (_statusFilter().length || _transactionTypeFilter().length) {
           <button hlmBtn variant="ghost" size="sm" align="end" (click)="resetFilters()">
@@ -223,25 +222,25 @@ import { TypePipe } from './pipes/type-pipe';
       </div>
 
       <div class="flex gap-2">
-        <button hlmBtn variant="outline" size="sm" [brnMenuTriggerFor]="menu">
+        <button hlmBtn variant="outline" size="sm" [hlmDropdownMenuTrigger]="menu">
           <ng-icon hlm name="lucideColumns2" class="mr-2" size="sm" />
           Columns
           <ng-icon hlm name="lucideChevronDown" class="ml-2" size="sm" />
         </button>
         <ng-template #menu>
-          <hlm-menu class="w-32">
+          <hlm-dropdown-menu class="w-32">
             @for (column of hidableColumns; track column.id) {
               <button
-                hlmMenuItemCheckbox
+                hlmDropdownMenuCheckbox
                 class="capitalize"
                 [checked]="column.getIsVisible()"
                 (triggered)="column.toggleVisibility()"
               >
-                <hlm-menu-item-check />
+                <hlm-dropdown-menu-checkbox-indicator />
                 {{ column.columnDef.id }}
               </button>
             }
-          </hlm-menu>
+          </hlm-dropdown-menu>
         </ng-template>
 
         <button hlmBtn size="sm" variant="outline" (click)="makeDeposit()">

@@ -1,22 +1,22 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideSun, lucideMoon, lucideMonitor, lucideCheck } from '@ng-icons/lucide';
-import { BrnMenuImports } from '@spartan-ng/brain/menu';
+
 import { HlmButtonImports } from '@spartan-ng/helm/button';
 import { HlmIcon } from '@spartan-ng/helm/icon';
-import { HlmMenuImports } from '@spartan-ng/helm/menu';
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { Theme } from 'ngx-sonner';
 import { ThemeService } from '../services/theme-service';
 
 @Component({
   selector: 'app-theme-toggle',
-  imports: [NgIcon, HlmIcon, BrnMenuImports, HlmMenuImports, HlmButtonImports],
+  imports: [NgIcon, HlmIcon, HlmDropdownMenuImports, HlmButtonImports],
   providers: [provideIcons({ lucideSun, lucideMoon, lucideMonitor, lucideCheck })],
   template: `<button
       hlmBtn
       variant="ghost"
       size="icon"
-      [brnMenuTriggerFor]="themeMenu"
+      [hlmDropdownMenuTrigger]="themeMenu"
       data-cy="theme-toggle"
       aria-label="Toggle theme"
     >
@@ -31,31 +31,31 @@ import { ThemeService } from '../services/theme-service';
     </button>
 
     <ng-template #themeMenu>
-      <hlm-menu class="w-40">
-        <hlm-menu-group>
-          <button hlmMenuItem (click)="setTheme('light')">
+      <hlm-dropdown-menu class="w-40">
+        <hlm-dropdown-menu-group>
+          <button hlmDropdownMenuItem (click)="setTheme('light')">
             <ng-icon hlm name="lucideSun" size="sm" />
             <span>Light</span>
             @if (theme() === 'light') {
               <ng-icon hlm name="lucideCheck" size="sm" class="ml-auto" />
             }
           </button>
-          <button hlmMenuItem (click)="setTheme('dark')">
+          <button hlmDropdownMenuItem (click)="setTheme('dark')">
             <ng-icon hlm name="lucideMoon" size="sm" />
             <span>Dark</span>
             @if (theme() === 'dark') {
               <ng-icon hlm name="lucideCheck" size="sm" class="ml-auto" />
             }
           </button>
-          <button hlmMenuItem (click)="setTheme('system')">
+          <button hlmDropdownMenuItem (click)="setTheme('system')">
             <ng-icon hlm name="lucideMonitor" size="sm" />
             <span>System</span>
             @if (theme() === 'system') {
               <ng-icon hlm name="lucideCheck" size="sm" class="ml-auto" />
             }
           </button>
-        </hlm-menu-group>
-      </hlm-menu>
+        </hlm-dropdown-menu-group>
+      </hlm-dropdown-menu>
     </ng-template> `,
   styles: ``,
   changeDetection: ChangeDetectionStrategy.OnPush,

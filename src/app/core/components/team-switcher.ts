@@ -1,10 +1,10 @@
 import { ChangeDetectionStrategy, Component, input, linkedSignal } from '@angular/core';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucidePlus } from '@ng-icons/lucide';
-import { BrnCollapsibleImports } from '@spartan-ng/brain/collapsible';
-import { BrnMenuImports } from '@spartan-ng/brain/menu';
+import { HlmCollapsibleImports } from '@spartan-ng/helm/collapsible';
+
 import { HlmIcon } from '@spartan-ng/helm/icon';
-import { HlmMenuImports } from '@spartan-ng/helm/menu';
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 
 interface Team {
@@ -15,14 +15,7 @@ interface Team {
 
 @Component({
   selector: 'app-team-switcher',
-  imports: [
-    HlmSidebarImports,
-    BrnCollapsibleImports,
-    HlmMenuImports,
-    BrnMenuImports,
-    HlmIcon,
-    NgIcon,
-  ],
+  imports: [HlmSidebarImports, HlmCollapsibleImports, HlmDropdownMenuImports, HlmIcon, NgIcon],
   providers: [provideIcons({ lucidePlus })],
   template: `
     <ul hlmSidebarMenu>
@@ -30,7 +23,7 @@ interface Team {
         <!-- class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"   -->
         <a
           hlmSidebarMenuButton
-          [brnMenuTriggerFor]="menu"
+          [hlmDropdownMenuTrigger]="menu"
           align="center"
           size="lg"
           class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
@@ -51,12 +44,14 @@ interface Team {
     </ul>
 
     <ng-template #menu>
-      <hlm-menu class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg">
-        <hlm-menu-label class="text-muted-foreground text-xs"> Teams </hlm-menu-label>
+      <hlm-dropdown-menu class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg">
+        <hlm-dropdown-menu-label class="text-muted-foreground text-xs">
+          Teams
+        </hlm-dropdown-menu-label>
 
-        <hlm-menu-group>
+        <hlm-dropdown-menu-group>
           @for (team of teams(); track $index) {
-            <button hlmMenuItem class="gap-2 p-2" (click)="activeTeam.set(team)">
+            <button hlmDropdownMenuItem class="gap-2 p-2" (click)="activeTeam.set(team)">
               <div class="flex size-6 items-center justify-center rounded-md border">
                 <ng-icon hlm [name]="team.logo" class="size-3.5 shrink-0" size="sm" />
               </div>
@@ -64,19 +59,19 @@ interface Team {
               <div hlmSidebarMenuBadge>⌘{{ $index + 1 }}</div>
             </button>
           }
-        </hlm-menu-group>
+        </hlm-dropdown-menu-group>
 
-        <hlm-menu-separator />
+        <hlm-dropdown-menu-separator />
 
-        <hlm-menu-group>
-          <button hlmMenuItem class="gap-2 p-2">
+        <hlm-dropdown-menu-group>
+          <button hlmDropdownMenuItem class="gap-2 p-2">
             <div class="flex size-6 items-center justify-center rounded-md border bg-transparent">
               <ng-icon hlm name="lucidePlus" size="sm" class="size-4" />
             </div>
             <div class="text-muted-foreground font-medium">Add team</div>
           </button>
-        </hlm-menu-group>
-      </hlm-menu>
+        </hlm-dropdown-menu-group>
+      </hlm-dropdown-menu>
     </ng-template>
   `,
   styles: ``,

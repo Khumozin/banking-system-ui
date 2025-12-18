@@ -1,11 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'type'
+  name: 'type',
 })
 export class TypePipe implements PipeTransform {
-
-transform(value: 'DEPOSIT' | 'TRANSFER'): string {
+  transform(value: 'DEPOSIT' | 'TRANSFER'): string {
     switch (value) {
       case 'DEPOSIT':
         return 'lucideArrowUpRight';
@@ -15,5 +14,4 @@ transform(value: 'DEPOSIT' | 'TRANSFER'): string {
         return 'lucideCircleHelp'; // Default icon if not recognized
     }
   }
-
 }

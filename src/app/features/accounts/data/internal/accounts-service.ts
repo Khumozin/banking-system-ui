@@ -42,7 +42,7 @@ export class AccountsService {
     );
   }
 
-    /**
+  /**
    * Retrieves a account balance by its ID.
    *
    * @param id - The unique identifier of the account to retrieve

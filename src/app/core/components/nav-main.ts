@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { NgIcon } from '@ng-icons/core';
 import { HlmIcon } from '@spartan-ng/helm/icon';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
-import { BrnCollapsibleImports } from '@spartan-ng/brain/collapsible';
+import { HlmCollapsibleImports } from '@spartan-ng/helm/collapsible';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { BrnMenuImports } from '@spartan-ng/brain/menu';
-import { HlmMenuImports } from '@spartan-ng/helm/menu';
+
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 
 interface NavMainItem {
   title: string;
@@ -23,13 +23,12 @@ interface NavMainItem {
   selector: 'app-nav-main',
   imports: [
     HlmSidebarImports,
-    BrnCollapsibleImports,
-    HlmMenuImports,
-    BrnMenuImports,
+    HlmCollapsibleImports,
+    HlmDropdownMenuImports,
     HlmIcon,
     NgIcon,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
   ],
   template: `
     <div hlmSidebarGroup>

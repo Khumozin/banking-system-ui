@@ -1,11 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom, catchError, throwError } from 'rxjs';
-import {
-  CreateDeposit,
-  CreateTransfer,
-  Transaction,
-} from '../transaction.model';
+import { CreateDeposit, CreateTransfer, Transaction } from '../transaction.model';
 
 @Injectable({
   providedIn: 'root',

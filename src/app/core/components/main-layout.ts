@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { provideIcons } from '@ng-icons/core';
 import { lucideChevronDown } from '@ng-icons/lucide';
-import { BrnMenuImports } from '@spartan-ng/brain/menu';
-import { HlmMenuImports } from '@spartan-ng/helm/menu';
+
+import { HlmDropdownMenuImports } from '@spartan-ng/helm/dropdown-menu';
 import { HlmSidebarImports } from '@spartan-ng/helm/sidebar';
 import { Breadcrumb } from './breadcrumb';
 import Sidebar from './sidebar';
@@ -13,8 +13,7 @@ import ThemeToggle from './theme-toggle';
   selector: 'app-main-layout',
   imports: [
     HlmSidebarImports,
-    HlmMenuImports,
-    BrnMenuImports,
+    HlmDropdownMenuImports,
     Sidebar,
     Breadcrumb,
     ThemeToggle,
