@@ -1,15 +1,15 @@
 import { Directive, signal } from '@angular/core';
 import {
-    ColumnDef,
-    ColumnFiltersState,
-    createAngularTable,
-    getCoreRowModel,
-    getFilteredRowModel,
-    getPaginationRowModel,
-    getSortedRowModel,
-    PaginationState,
-    SortingState,
-    VisibilityState,
+  ColumnDef,
+  ColumnFiltersState,
+  createAngularTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  PaginationState,
+  SortingState,
+  VisibilityState,
 } from '@tanstack/angular-table';
 import { TABLE_PAGINATION } from '../constants/table.constants';
 
@@ -34,7 +34,6 @@ import { TABLE_PAGINATION } from '../constants/table.constants';
  */
 @Directive()
 export abstract class BaseEntityList<T> {
-
   /** Signal for managing table sorting state */
   protected readonly _sorting = signal<SortingState>([]);
 
@@ -71,9 +70,7 @@ export abstract class BaseEntityList<T> {
         : this._columnFilters.set(updater);
     },
     onSortingChange: (updater) => {
-      updater instanceof Function
-        ? this._sorting.update(updater)
-        : this._sorting.set(updater);
+      updater instanceof Function ? this._sorting.update(updater) : this._sorting.set(updater);
     },
     onPaginationChange: (updater) => {
       updater instanceof Function
@@ -106,9 +103,7 @@ export abstract class BaseEntityList<T> {
    * @param columnKey - The key of the column to filter
    */
   protected _filterChanged(event: Event, columnKey: string): void {
-    this._table
-      .getColumn(columnKey)
-      ?.setFilterValue((event.target as HTMLInputElement).value);
+    this._table.getColumn(columnKey)?.setFilterValue((event.target as HTMLInputElement).value);
   }
 
   /**
@@ -138,5 +133,4 @@ export abstract class BaseEntityList<T> {
   get data(): T[] {
     return [];
   }
-
 }

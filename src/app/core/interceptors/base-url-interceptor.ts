@@ -26,9 +26,7 @@ export const baseUrlInterceptor: HttpInterceptorFn = (req, next) => {
     '/transactions': config.get('APP_TRANSACTIONS_API_URL'),
   };
 
-  const matchedPrefix = Object.keys(apiMappings).find(prefix =>
-    req.url.startsWith(prefix)
-  );
+  const matchedPrefix = Object.keys(apiMappings).find((prefix) => req.url.startsWith(prefix));
 
   if (matchedPrefix) {
     const baseUrl = apiMappings[matchedPrefix];

@@ -26,7 +26,7 @@ import AccountNumber from './account-number';
     DatePipe,
     AccountTransactionHistory,
     NumberFlow,
-    AccountNumber
+    AccountNumber,
   ],
   providers: [provideIcons({ lucideLoaderCircle, lucideUserRound })],
   template: `

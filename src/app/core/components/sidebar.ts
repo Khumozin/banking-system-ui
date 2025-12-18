@@ -25,7 +25,8 @@ const data = {
   user: {
     name: 'Khumo Mogorosi',
     email: 'm@example.com',
-    avatar: 'https://avatars.githubusercontent.com/u/30941916?s=400&u=99cb30e3609f8089467a7b3bd3f7570b5178e8ea&v=4',
+    avatar:
+      'https://avatars.githubusercontent.com/u/30941916?s=400&u=99cb30e3609f8089467a7b3bd3f7570b5178e8ea&v=4',
   },
   teams: [
     {

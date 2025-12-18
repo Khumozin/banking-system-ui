@@ -9,7 +9,14 @@ import { DatePipe, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-account-transaction-history',
-  imports: [HlmFieldImports, HlmSeparatorImports, HlmScrollAreaImports, NgScrollbarModule, TitleCasePipe, DatePipe],
+  imports: [
+    HlmFieldImports,
+    HlmSeparatorImports,
+    HlmScrollAreaImports,
+    NgScrollbarModule,
+    TitleCasePipe,
+    DatePipe,
+  ],
   template: `
     <fieldset hlmFieldSet class="gap-3">
       <legend hlmFieldLegend>Transaction History</legend>
@@ -21,10 +28,12 @@ import { DatePipe, TitleCasePipe } from '@angular/common';
             <div class="text-sm">
               <div class="w-full grid grid-cols-6">
                 <div class="col-span-1 truncate font-mono">{{ transaction.transactionId }}</div>
-                <div class="col-span-1">{{ transaction.transactionType | titlecase}}</div>
+                <div class="col-span-1">{{ transaction.transactionType | titlecase }}</div>
                 <div class="col-span-1">{{ transaction.amount }}</div>
-                <div class="col-span-1">{{ transaction.status | titlecase}}</div>
-                <div class="col-span-2">{{ transaction.createdAt | date:'yyyy/MM/dd HH:mm:ss' }}</div>
+                <div class="col-span-1">{{ transaction.status | titlecase }}</div>
+                <div class="col-span-2">
+                  {{ transaction.createdAt | date: 'yyyy/MM/dd HH:mm:ss' }}
+                </div>
               </div>
               <div hlmSeparator class="my-2"></div>
             </div>
