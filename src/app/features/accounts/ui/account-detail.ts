@@ -8,11 +8,13 @@ import { injectBrnDialogContext } from '@spartan-ng/brain/dialog';
 import { DialogData } from '../../../shared/ui/dialog/dialog-data.model';
 import { HlmFieldImports } from '@spartan-ng/helm/field';
 import { Account } from '../data/account.model';
-import { CurrencyPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import AccountTransactionHistory from './account-transaction-history';
 import NumberFlow from '../../../shared/ui/number-flow';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { interval, map, take, timer } from 'rxjs';
+import { map, take, timer } from 'rxjs';
+import { Format } from 'number-flow';
+import AccountNumber from './account-number';
 
 @Component({
   selector: 'app-account-detail',
@@ -21,10 +23,10 @@ import { interval, map, take, timer } from 'rxjs';
     HlmButtonImports,
     HlmFieldImports,
     Dialog,
-    CurrencyPipe,
     DatePipe,
     AccountTransactionHistory,
     NumberFlow,
+    AccountNumber
   ],
   providers: [provideIcons({ lucideLoaderCircle, lucideUserRound })],
   template: `
@@ -40,7 +42,9 @@ import { interval, map, take, timer } from 'rxjs';
           <div hlmFieldGroup class="grid grid-cols-2">
             <div hlmField class="col-span-1 gap-1">
               <label hlmFieldLabel for="accountId">Account ID</label>
-              <p hlmFieldDescription class="font-mono">{{ _dialogContext.data.accountId }}</p>
+              <p hlmFieldDescription class="font-mono">
+                <app-account-number [accountNumber]="_dialogContext.data.accountId" />
+              </p>
             </div>
             <div hlmField class="col-span-1 gap-1">
               <label hlmFieldLabel for="ownerName">Owner Name</label>
@@ -67,11 +71,7 @@ import { interval, map, take, timer } from 'rxjs';
                   [trend]="-1"
                   [value]="balance()"
                   [digits]="digits"
-                  [format]="{
-                    minimumIntegerDigits: 1,
-                    style: 'currency',
-                    currency: 'ZAR',
-                  }"
+                  [format]="format"
                   locales="en-ZA"
                 />
               </p>
@@ -92,6 +92,11 @@ export default class AccountDetail {
   protected readonly _dialogContext = injectBrnDialogContext<DialogData<Account>>();
 
   readonly digits = { 1: { max: 5 } };
+  readonly format: Format = {
+    minimumIntegerDigits: 1,
+    style: 'currency',
+    currency: 'ZAR',
+  };
 
   // delay balance so that is animates smoothly
   balance = toSignal(
